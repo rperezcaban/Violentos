@@ -1,6 +1,5 @@
 import streamlit as st
 from streamlit_utils import num_check
-from streamlit_utils import check_yes_no
 
 #st.set_page_config(layout="wide")
 
