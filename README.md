@@ -1,2 +1,0 @@
-# Violentos
-Campamento Violentos
