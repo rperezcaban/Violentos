@@ -1,6 +1,5 @@
 import streamlit as st
 from streamlit_utils import num_check
-from streamlit_utils import check_yes_no
 
 #st.set_page_config(layout="wide")
 
@@ -34,6 +33,7 @@ with st.container(border=True):
                         help="Inserte número de teléfono sin ningun símbolo"
                         )
     if pnum is not None and num_check(pnum) == False:
+        st.session_state.pnumber = None
         st.error("Favor de ingresar solo números sin caracteres especiales")  
 
     email = st.text_input("Email",
@@ -123,8 +123,13 @@ with st.container(border=True):
                         """                  
                         )
     
-    # terms = st.checkbox("Acepto las reglas y terminos", value=False, key="terms")
-    # st.page_link("pages/terminos.py", label="Home", icon="🏠")
+    #Area de confirmacion de pago
+    st.subheader("Confirmacion de Pago", divider=True)
+    pago = st.number_input("Cantidad pagada", key='amount', placeholder="Favor ingresar cantidad de pago",min_value=1, max_value=100, value=None, step=1)
+
+    ref_num = st.text_input("Numero de Referencia", value=None )
+
+    evidencia = st.file_uploader("Screenshot ATH Movil", key='evidence')
 
     #Seccion de Reglas y Terminos
     st.subheader("Reglas y Terminos", divider=True)
